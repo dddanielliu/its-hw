@@ -6,8 +6,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
 
-package homework;
-
 import org.car2x.veins.modules.application.ieee80211p.DemoBaseApplLayer;
 
 // 自定義應用層模組定義

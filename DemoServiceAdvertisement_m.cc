@@ -26,7 +26,6 @@
 
 #include <iostream>
 #include <sstream>
-#include <memory>
 #include "DemoServiceAdvertisement_m.h"
 
 namespace omnetpp {
@@ -68,7 +67,7 @@ void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::list<T,A>& l)
 {
     int n;
     doParsimUnpacking(buffer, n);
-    for (int i = 0; i < n; i++) {
+    for (int i=0; i<n; i++) {
         l.push_back(T());
         doParsimUnpacking(buffer, l.back());
     }
@@ -88,7 +87,7 @@ void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::set<T,Tr,A>& s)
 {
     int n;
     doParsimUnpacking(buffer, n);
-    for (int i = 0; i < n; i++) {
+    for (int i=0; i<n; i++) {
         T x;
         doParsimUnpacking(buffer, x);
         s.insert(x);
@@ -111,7 +110,7 @@ void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::map<K,V,Tr,A>& m)
 {
     int n;
     doParsimUnpacking(buffer, n);
-    for (int i = 0; i < n; i++) {
+    for (int i=0; i<n; i++) {
         K k; V v;
         doParsimUnpacking(buffer, k);
         doParsimUnpacking(buffer, v);
@@ -149,39 +148,11 @@ void doParsimUnpacking(omnetpp::cCommBuffer *, T& t)
 
 }  // namespace omnetpp
 
-namespace {
-template <class T> inline
-typename std::enable_if<std::is_polymorphic<T>::value && std::is_base_of<omnetpp::cObject,T>::value, void *>::type
-toVoidPtr(T* t)
-{
-    return (void *)(static_cast<const omnetpp::cObject *>(t));
-}
-
-template <class T> inline
-typename std::enable_if<std::is_polymorphic<T>::value && !std::is_base_of<omnetpp::cObject,T>::value, void *>::type
-toVoidPtr(T* t)
-{
-    return (void *)dynamic_cast<const void *>(t);
-}
-
-template <class T> inline
-typename std::enable_if<!std::is_polymorphic<T>::value, void *>::type
-toVoidPtr(T* t)
-{
-    return (void *)static_cast<const void *>(t);
-}
-
-}
-
 namespace veins {
 
 // forward
 template<typename T, typename A>
 std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec);
-
-// Template rule to generate operator<< for shared_ptr<T>
-template<typename T>
-inline std::ostream& operator<<(std::ostream& out,const std::shared_ptr<T>& t) { return out << t.get(); }
 
 // Template rule which fires if a struct or class doesn't have operator<<
 template<typename T>
@@ -200,7 +171,7 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
         out << *it;
     }
     out.put('}');
-
+    
     char buf[32];
     sprintf(buf, " (size=%u)", (unsigned int)vec.size());
     out.write(buf, strlen(buf));
@@ -209,8 +180,9 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
 
 Register_Class(DemoServiceAdvertisment)
 
-DemoServiceAdvertisment::DemoServiceAdvertisment(const char *name, short kind) : ::omnetpp::cPacket(name, kind)
+DemoServiceAdvertisment::DemoServiceAdvertisment(const char *name, short kind) : ::omnetpp::cPacket(name,kind)
 {
+    this->targetChannel = 0;
 }
 
 DemoServiceAdvertisment::DemoServiceAdvertisment(const DemoServiceAdvertisment& other) : ::omnetpp::cPacket(other)
@@ -224,7 +196,7 @@ DemoServiceAdvertisment::~DemoServiceAdvertisment()
 
 DemoServiceAdvertisment& DemoServiceAdvertisment::operator=(const DemoServiceAdvertisment& other)
 {
-    if (this == &other) return *this;
+    if (this==&other) return *this;
     ::omnetpp::cPacket::operator=(other);
     copy(other);
     return *this;
@@ -274,10 +246,6 @@ class DemoServiceAdvertismentDescriptor : public omnetpp::cClassDescriptor
 {
   private:
     mutable const char **propertynames;
-    enum FieldConstants {
-        FIELD_targetChannel,
-        FIELD_serviceDescription,
-    };
   public:
     DemoServiceAdvertismentDescriptor();
     virtual ~DemoServiceAdvertismentDescriptor();
@@ -304,7 +272,7 @@ class DemoServiceAdvertismentDescriptor : public omnetpp::cClassDescriptor
 
 Register_ClassDescriptor(DemoServiceAdvertismentDescriptor)
 
-DemoServiceAdvertismentDescriptor::DemoServiceAdvertismentDescriptor() : omnetpp::cClassDescriptor(omnetpp::opp_typename(typeid(veins::DemoServiceAdvertisment)), "omnetpp::cPacket")
+DemoServiceAdvertismentDescriptor::DemoServiceAdvertismentDescriptor() : omnetpp::cClassDescriptor("veins::DemoServiceAdvertisment", "omnetpp::cPacket")
 {
     propertynames = nullptr;
 }
@@ -351,10 +319,10 @@ unsigned int DemoServiceAdvertismentDescriptor::getFieldTypeFlags(int field) con
         field -= basedesc->getFieldCount();
     }
     static unsigned int fieldTypeFlags[] = {
-        FD_ISEDITABLE,    // FIELD_targetChannel
-        FD_ISEDITABLE,    // FIELD_serviceDescription
+        FD_ISEDITABLE,
+        FD_ISEDITABLE,
     };
-    return (field >= 0 && field < 2) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<2) ? fieldTypeFlags[field] : 0;
 }
 
 const char *DemoServiceAdvertismentDescriptor::getFieldName(int field) const
@@ -369,15 +337,15 @@ const char *DemoServiceAdvertismentDescriptor::getFieldName(int field) const
         "targetChannel",
         "serviceDescription",
     };
-    return (field >= 0 && field < 2) ? fieldNames[field] : nullptr;
+    return (field>=0 && field<2) ? fieldNames[field] : nullptr;
 }
 
 int DemoServiceAdvertismentDescriptor::findField(const char *fieldName) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     int base = basedesc ? basedesc->getFieldCount() : 0;
-    if (fieldName[0] == 't' && strcmp(fieldName, "targetChannel") == 0) return base+0;
-    if (fieldName[0] == 's' && strcmp(fieldName, "serviceDescription") == 0) return base+1;
+    if (fieldName[0]=='t' && strcmp(fieldName, "targetChannel")==0) return base+0;
+    if (fieldName[0]=='s' && strcmp(fieldName, "serviceDescription")==0) return base+1;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -390,10 +358,10 @@ const char *DemoServiceAdvertismentDescriptor::getFieldTypeString(int field) con
         field -= basedesc->getFieldCount();
     }
     static const char *fieldTypeStrings[] = {
-        "int",    // FIELD_targetChannel
-        "string",    // FIELD_serviceDescription
+        "int",
+        "string",
     };
-    return (field >= 0 && field < 2) ? fieldTypeStrings[field] : nullptr;
+    return (field>=0 && field<2) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **DemoServiceAdvertismentDescriptor::getFieldPropertyNames(int field) const
@@ -460,8 +428,8 @@ std::string DemoServiceAdvertismentDescriptor::getFieldValueAsString(void *objec
     }
     DemoServiceAdvertisment *pp = (DemoServiceAdvertisment *)object; (void)pp;
     switch (field) {
-        case FIELD_targetChannel: return long2string(pp->getTargetChannel());
-        case FIELD_serviceDescription: return oppstring2string(pp->getServiceDescription());
+        case 0: return long2string(pp->getTargetChannel());
+        case 1: return oppstring2string(pp->getServiceDescription());
         default: return "";
     }
 }
@@ -476,8 +444,8 @@ bool DemoServiceAdvertismentDescriptor::setFieldValueAsString(void *object, int 
     }
     DemoServiceAdvertisment *pp = (DemoServiceAdvertisment *)object; (void)pp;
     switch (field) {
-        case FIELD_targetChannel: pp->setTargetChannel(string2long(value)); return true;
-        case FIELD_serviceDescription: pp->setServiceDescription((value)); return true;
+        case 0: pp->setTargetChannel(string2long(value)); return true;
+        case 1: pp->setServiceDescription((value)); return true;
         default: return false;
     }
 }

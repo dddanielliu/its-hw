@@ -7,7 +7,7 @@
 using namespace veins;
 using omnetpp::cMessage;
 
-Define_Module(veins::MyVeinsApp);
+Define_Module(MyVeinsApp);
 
 void MyVeinsApp::initialize(int stage)
 {

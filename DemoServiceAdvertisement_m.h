@@ -19,12 +19,6 @@
 
 namespace veins {
 
-class DemoServiceAdvertisment;
-} // namespace veins
-
-
-namespace veins {
-
 /**
  * Class generated from <tt>DemoServiceAdvertisement.msg:25</tt> by nedtool.
  * <pre>
@@ -38,8 +32,8 @@ namespace veins {
 class DemoServiceAdvertisment : public ::omnetpp::cPacket
 {
   protected:
-    int targetChannel = 0;
-    omnetpp::opp_string serviceDescription;
+    int targetChannel;
+    ::omnetpp::opp_string serviceDescription;
 
   private:
     void copy(const DemoServiceAdvertisment& other);
