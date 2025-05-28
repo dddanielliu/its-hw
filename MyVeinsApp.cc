@@ -1,6 +1,6 @@
 #include "MyVeinsApp.h"
-// #include "DemoSafetyMessage_m.h"
-// #include "DemoServiceAdvertisement_m.h"
+#include "DemoSafetyMessage_m.h"
+#include "DemoServiceAdvertisement_m.h"
 // #include "DemoBaseApplLayer.h"
 // #include <omnetpp.h>
 
