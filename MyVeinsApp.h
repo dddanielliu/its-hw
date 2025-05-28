@@ -63,3 +63,6 @@ protected:
 };
 
 } // namespace veins
+
+// Create a global alias for OMNeT++ module registration
+using MyVeinsApp = veins::MyVeinsApp;

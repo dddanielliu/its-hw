@@ -6,8 +6,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
 
-import org.car2x.veins.modules.application.ieee80211p.DemoBaseApplLayer;
-
 // RSU應用層模組定義
 simple MyVeinsRSU extends DemoBaseApplLayer
 {

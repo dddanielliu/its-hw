@@ -1,13 +1,7 @@
-#include "MyVeinsApp.h"
-#include "CustomSafetyMessage_m.h"
-#include "DemoServiceAdvertisement_m.h"
-// #include "DemoBaseApplLayer.h"
-// #include <omnetpp.h>
+#include "GlobalMyVeinsApp.h"
 
 using namespace veins;
-using omnetpp::cMessage;
 
-// Register module in global namespace for NED compatibility
 Define_Module(MyVeinsApp);
 
 void MyVeinsApp::initialize(int stage)
@@ -65,10 +59,9 @@ void MyVeinsApp::sendBSMMessage()
 
     sendDown(wsm);
 
-    EV_INFO << "Send BSM from id=" << beacon->getVehicle() << endl;
-    EV_INFO << "Speed=" << beacon->getSpeed() << endl;
-    EV_INFO << "PosX=" << beacon->getPosX() << endl;
-    EV_INFO << "PosY=" << beacon->getPosY() << endl;
+    EV_INFO << "[Vehicle " << beacon->getVehicle() << "] Send BSM - Speed=" 
+            << beacon->getSpeed() << " m/s, Position=(" << beacon->getPosX() 
+            << ", " << beacon->getPosY() << ")" << endl;
 }
 
 void MyVeinsApp::onWSM(BaseFrame1609_4* wsm)
@@ -84,7 +77,7 @@ void MyVeinsApp::onWSM(BaseFrame1609_4* wsm)
                     << ", Position=(" << data->getPosX() << ", " << data->getPosY() << ")" << endl;
         } else {
             // Vehicle receiving message
-            EV_INFO << "[Vehicle] Received BSM from Vehicle ID=" << data->getVehicle()
+            EV_INFO << "[Vehicle " << getParentModule()->getId() << "] Received BSM from Vehicle ID=" << data->getVehicle()
                     << ", Speed=" << data->getSpeed() << " m/s"
                     << ", Position=(" << data->getPosX() << ", " << data->getPosY() << ")" << endl;
         }

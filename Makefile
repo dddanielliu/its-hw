@@ -30,11 +30,12 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/MyVeinsApp.o $O/CustomSafetyMessage_m.o
+OBJS = $O/GlobalMyVeinsApp.o $O/CustomSafetyMessage_m.o $O/DemoServiceAdvertisement_m.o
 
 # Message files
 MSGFILES = \
-    CustomSafetyMessage.msg
+    CustomSafetyMessage.msg \
+    DemoServiceAdvertisement.msg
 
 # SM files
 SMFILES =

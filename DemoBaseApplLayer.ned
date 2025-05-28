@@ -20,7 +20,17 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-import org.car2x.veins.base.modules.IBaseApplLayer;
+import veins.base.modules.IBaseApplLayer;
+
+// 基礎接口定義
+moduleinterface IBaseApplLayer
+{
+    gates:
+        input lowerLayerIn;
+        output lowerLayerOut;
+        input lowerControlIn;
+        output lowerControlOut;
+}
 
 //
 // Demo application layer base class.
