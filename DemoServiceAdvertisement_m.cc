@@ -1,5 +1,5 @@
 //
-// Generated file, do not edit! Created by nedtool 5.6 from veins/modules/messages/DemoServiceAdvertisement.msg.
+// Generated file, do not edit! Created by nedtool 5.6 from DemoServiceAdvertisement.msg.
 //
 
 // Disable warnings about unused variables, empty switch stmts, etc:
@@ -209,11 +209,11 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
 
 Register_Class(DemoServiceAdvertisment)
 
-DemoServiceAdvertisment::DemoServiceAdvertisment(const char *name, short kind) : ::veins::BaseFrame1609_4(name, kind)
+DemoServiceAdvertisment::DemoServiceAdvertisment(const char *name, short kind) : ::omnetpp::cPacket(name, kind)
 {
 }
 
-DemoServiceAdvertisment::DemoServiceAdvertisment(const DemoServiceAdvertisment& other) : ::veins::BaseFrame1609_4(other)
+DemoServiceAdvertisment::DemoServiceAdvertisment(const DemoServiceAdvertisment& other) : ::omnetpp::cPacket(other)
 {
     copy(other);
 }
@@ -225,7 +225,7 @@ DemoServiceAdvertisment::~DemoServiceAdvertisment()
 DemoServiceAdvertisment& DemoServiceAdvertisment::operator=(const DemoServiceAdvertisment& other)
 {
     if (this == &other) return *this;
-    ::veins::BaseFrame1609_4::operator=(other);
+    ::omnetpp::cPacket::operator=(other);
     copy(other);
     return *this;
 }
@@ -238,14 +238,14 @@ void DemoServiceAdvertisment::copy(const DemoServiceAdvertisment& other)
 
 void DemoServiceAdvertisment::parsimPack(omnetpp::cCommBuffer *b) const
 {
-    ::veins::BaseFrame1609_4::parsimPack(b);
+    ::omnetpp::cPacket::parsimPack(b);
     doParsimPacking(b,this->targetChannel);
     doParsimPacking(b,this->serviceDescription);
 }
 
 void DemoServiceAdvertisment::parsimUnpack(omnetpp::cCommBuffer *b)
 {
-    ::veins::BaseFrame1609_4::parsimUnpack(b);
+    ::omnetpp::cPacket::parsimUnpack(b);
     doParsimUnpacking(b,this->targetChannel);
     doParsimUnpacking(b,this->serviceDescription);
 }
@@ -304,7 +304,7 @@ class DemoServiceAdvertismentDescriptor : public omnetpp::cClassDescriptor
 
 Register_ClassDescriptor(DemoServiceAdvertismentDescriptor)
 
-DemoServiceAdvertismentDescriptor::DemoServiceAdvertismentDescriptor() : omnetpp::cClassDescriptor(omnetpp::opp_typename(typeid(veins::DemoServiceAdvertisment)), "veins::BaseFrame1609_4")
+DemoServiceAdvertismentDescriptor::DemoServiceAdvertismentDescriptor() : omnetpp::cClassDescriptor(omnetpp::opp_typename(typeid(veins::DemoServiceAdvertisment)), "omnetpp::cPacket")
 {
     propertynames = nullptr;
 }

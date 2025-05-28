@@ -1,9 +1,9 @@
 //
-// Generated file, do not edit! Created by nedtool 5.6 from DemoSafetyMessage.msg.
+// Generated file, do not edit! Created by nedtool 5.6 from CustomSafetyMessage.msg.
 //
 
-#ifndef __VEINS_DEMOSAFETYMESSAGE_M_H
-#define __VEINS_DEMOSAFETYMESSAGE_M_H
+#ifndef __VEINS_CUSTOMSAFETYMESSAGE_M_H
+#define __VEINS_CUSTOMSAFETYMESSAGE_M_H
 
 #if defined(__clang__)
 #  pragma clang diagnostic ignored "-Wreserved-id-macro"
@@ -20,9 +20,9 @@
 namespace veins {
 
 /**
- * Class generated from <tt>DemoSafetyMessage.msg:41</tt> by nedtool.
+ * Class generated from <tt>CustomSafetyMessage.msg:41</tt> by nedtool.
  * <pre>
- * packet DemoSafetyMessage
+ * packet CustomSafetyMessage
  * {
  *     int vehicle;
  *     double posX;
@@ -32,7 +32,7 @@ namespace veins {
  * }
  * </pre>
  */
-class DemoSafetyMessage : public ::omnetpp::cPacket
+class CustomSafetyMessage : public ::omnetpp::cPacket
 {
   protected:
     int vehicle;
@@ -42,18 +42,18 @@ class DemoSafetyMessage : public ::omnetpp::cPacket
     double acl;
 
   private:
-    void copy(const DemoSafetyMessage& other);
+    void copy(const CustomSafetyMessage& other);
 
   protected:
     // protected and unimplemented operator==(), to prevent accidental usage
-    bool operator==(const DemoSafetyMessage&);
+    bool operator==(const CustomSafetyMessage&);
 
   public:
-    DemoSafetyMessage(const char *name=nullptr, short kind=0);
-    DemoSafetyMessage(const DemoSafetyMessage& other);
-    virtual ~DemoSafetyMessage();
-    DemoSafetyMessage& operator=(const DemoSafetyMessage& other);
-    virtual DemoSafetyMessage *dup() const override {return new DemoSafetyMessage(*this);}
+    CustomSafetyMessage(const char *name=nullptr, short kind=0);
+    CustomSafetyMessage(const CustomSafetyMessage& other);
+    virtual ~CustomSafetyMessage();
+    CustomSafetyMessage& operator=(const CustomSafetyMessage& other);
+    virtual CustomSafetyMessage *dup() const override {return new CustomSafetyMessage(*this);}
     virtual void parsimPack(omnetpp::cCommBuffer *b) const override;
     virtual void parsimUnpack(omnetpp::cCommBuffer *b) override;
 
@@ -70,10 +70,10 @@ class DemoSafetyMessage : public ::omnetpp::cPacket
     virtual void setAcl(double acl);
 };
 
-inline void doParsimPacking(omnetpp::cCommBuffer *b, const DemoSafetyMessage& obj) {obj.parsimPack(b);}
-inline void doParsimUnpacking(omnetpp::cCommBuffer *b, DemoSafetyMessage& obj) {obj.parsimUnpack(b);}
+inline void doParsimPacking(omnetpp::cCommBuffer *b, const CustomSafetyMessage& obj) {obj.parsimPack(b);}
+inline void doParsimUnpacking(omnetpp::cCommBuffer *b, CustomSafetyMessage& obj) {obj.parsimUnpack(b);}
 
 } // namespace veins
 
-#endif // ifndef __VEINS_DEMOSAFETYMESSAGE_M_H
+#endif // ifndef __VEINS_CUSTOMSAFETYMESSAGE_M_H
 

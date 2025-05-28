@@ -1,5 +1,5 @@
 #include "MyVeinsApp.h"
-#include "DemoSafetyMessage_m.h"
+#include "CustomSafetyMessage_m.h"
 #include "DemoServiceAdvertisement_m.h"
 // #include "DemoBaseApplLayer.h"
 // #include <omnetpp.h>
@@ -40,7 +40,7 @@ void MyVeinsApp::handleSelfMsg(cMessage* msg)
 
 void MyVeinsApp::sendBSMMessage()
 {
-    auto* beacon = new DemoSafetyMessage("bsm");
+    auto* beacon = new CustomSafetyMessage("bsm");
 
     beacon->setVehicle(getParentModule()->getId());
 
@@ -68,7 +68,7 @@ void MyVeinsApp::sendBSMMessage()
 void MyVeinsApp::onWSM(BaseFrame1609_4* wsm)
 {
     auto* enc = wsm->getEncapsulatedPacket();
-    auto* data = dynamic_cast<DemoSafetyMessage*>(enc);
+    auto* data = dynamic_cast<CustomSafetyMessage*>(enc);
 
     if (data) {
         EV_INFO << "Received BSM: ID="  << data->getVehicle()
@@ -78,9 +78,15 @@ void MyVeinsApp::onWSM(BaseFrame1609_4* wsm)
     }
 }
 
+void MyVeinsApp::onMyBSM(CustomSafetyMessage* bsm)
+{
+    EV_INFO << "onMyBSM called (beacon) – vehicle=" << bsm->getVehicle() << endl;
+}
+
 void MyVeinsApp::onBSM(DemoSafetyMessage* bsm)
 {
-    EV_INFO << "onBSM called (beacon) – vehicle=" << bsm->getVehicle() << endl;
+    // This is for the original veins DemoSafetyMessage
+    EV_INFO << "onBSM called (standard veins beacon)" << endl;
 }
 
 void MyVeinsApp::onWSA(DemoServiceAdvertisment*)

@@ -16,13 +16,13 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(QTENV_LIBS) $(CMDENV_LI
 #USERIF_LIBS = $(QTENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I/packages/veins/src
+INCLUDE_PATH = -I. -I/packages/omnetpp/include -I/packages/veins/src
 
 # Additional object and library files to link with
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS =
+LIBS = -L/packages/veins/src -lveins$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = out
@@ -30,11 +30,11 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/MyVeinsApp.o $O/DemoSafetyMessage_m.o
+OBJS = $O/MyVeinsApp.o $O/CustomSafetyMessage_m.o
 
 # Message files
 MSGFILES = \
-    DemoSafetyMessage.msg
+    CustomSafetyMessage.msg
 
 # SM files
 SMFILES =

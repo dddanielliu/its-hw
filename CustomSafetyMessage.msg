@@ -38,7 +38,7 @@
 
 namespace veins;
 
-packet DemoSafetyMessage{
+packet CustomSafetyMessage{
     int vehicle;
     double posX;
     double posY;

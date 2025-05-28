@@ -1,5 +1,5 @@
 //
-// Generated file, do not edit! Created by nedtool 5.6 from DemoSafetyMessage.msg.
+// Generated file, do not edit! Created by nedtool 5.6 from CustomSafetyMessage.msg.
 //
 
 // Disable warnings about unused variables, empty switch stmts, etc:
@@ -26,7 +26,7 @@
 
 #include <iostream>
 #include <sstream>
-#include "DemoSafetyMessage_m.h"
+#include "CustomSafetyMessage_m.h"
 
 namespace omnetpp {
 
@@ -178,9 +178,9 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
     return out;
 }
 
-Register_Class(DemoSafetyMessage)
+Register_Class(CustomSafetyMessage)
 
-DemoSafetyMessage::DemoSafetyMessage(const char *name, short kind) : ::omnetpp::cPacket(name,kind)
+CustomSafetyMessage::CustomSafetyMessage(const char *name, short kind) : ::omnetpp::cPacket(name,kind)
 {
     this->vehicle = 0;
     this->posX = 0;
@@ -189,16 +189,16 @@ DemoSafetyMessage::DemoSafetyMessage(const char *name, short kind) : ::omnetpp::
     this->acl = 0;
 }
 
-DemoSafetyMessage::DemoSafetyMessage(const DemoSafetyMessage& other) : ::omnetpp::cPacket(other)
+CustomSafetyMessage::CustomSafetyMessage(const CustomSafetyMessage& other) : ::omnetpp::cPacket(other)
 {
     copy(other);
 }
 
-DemoSafetyMessage::~DemoSafetyMessage()
+CustomSafetyMessage::~CustomSafetyMessage()
 {
 }
 
-DemoSafetyMessage& DemoSafetyMessage::operator=(const DemoSafetyMessage& other)
+CustomSafetyMessage& CustomSafetyMessage::operator=(const CustomSafetyMessage& other)
 {
     if (this==&other) return *this;
     ::omnetpp::cPacket::operator=(other);
@@ -206,7 +206,7 @@ DemoSafetyMessage& DemoSafetyMessage::operator=(const DemoSafetyMessage& other)
     return *this;
 }
 
-void DemoSafetyMessage::copy(const DemoSafetyMessage& other)
+void CustomSafetyMessage::copy(const CustomSafetyMessage& other)
 {
     this->vehicle = other.vehicle;
     this->posX = other.posX;
@@ -215,7 +215,7 @@ void DemoSafetyMessage::copy(const DemoSafetyMessage& other)
     this->acl = other.acl;
 }
 
-void DemoSafetyMessage::parsimPack(omnetpp::cCommBuffer *b) const
+void CustomSafetyMessage::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::omnetpp::cPacket::parsimPack(b);
     doParsimPacking(b,this->vehicle);
@@ -225,7 +225,7 @@ void DemoSafetyMessage::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->acl);
 }
 
-void DemoSafetyMessage::parsimUnpack(omnetpp::cCommBuffer *b)
+void CustomSafetyMessage::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::omnetpp::cPacket::parsimUnpack(b);
     doParsimUnpacking(b,this->vehicle);
@@ -235,63 +235,63 @@ void DemoSafetyMessage::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->acl);
 }
 
-int DemoSafetyMessage::getVehicle() const
+int CustomSafetyMessage::getVehicle() const
 {
     return this->vehicle;
 }
 
-void DemoSafetyMessage::setVehicle(int vehicle)
+void CustomSafetyMessage::setVehicle(int vehicle)
 {
     this->vehicle = vehicle;
 }
 
-double DemoSafetyMessage::getPosX() const
+double CustomSafetyMessage::getPosX() const
 {
     return this->posX;
 }
 
-void DemoSafetyMessage::setPosX(double posX)
+void CustomSafetyMessage::setPosX(double posX)
 {
     this->posX = posX;
 }
 
-double DemoSafetyMessage::getPosY() const
+double CustomSafetyMessage::getPosY() const
 {
     return this->posY;
 }
 
-void DemoSafetyMessage::setPosY(double posY)
+void CustomSafetyMessage::setPosY(double posY)
 {
     this->posY = posY;
 }
 
-double DemoSafetyMessage::getSpeed() const
+double CustomSafetyMessage::getSpeed() const
 {
     return this->speed;
 }
 
-void DemoSafetyMessage::setSpeed(double speed)
+void CustomSafetyMessage::setSpeed(double speed)
 {
     this->speed = speed;
 }
 
-double DemoSafetyMessage::getAcl() const
+double CustomSafetyMessage::getAcl() const
 {
     return this->acl;
 }
 
-void DemoSafetyMessage::setAcl(double acl)
+void CustomSafetyMessage::setAcl(double acl)
 {
     this->acl = acl;
 }
 
-class DemoSafetyMessageDescriptor : public omnetpp::cClassDescriptor
+class CustomSafetyMessageDescriptor : public omnetpp::cClassDescriptor
 {
   private:
     mutable const char **propertynames;
   public:
-    DemoSafetyMessageDescriptor();
-    virtual ~DemoSafetyMessageDescriptor();
+    CustomSafetyMessageDescriptor();
+    virtual ~CustomSafetyMessageDescriptor();
 
     virtual bool doesSupport(omnetpp::cObject *obj) const override;
     virtual const char **getPropertyNames() const override;
@@ -313,24 +313,24 @@ class DemoSafetyMessageDescriptor : public omnetpp::cClassDescriptor
     virtual void *getFieldStructValuePointer(void *object, int field, int i) const override;
 };
 
-Register_ClassDescriptor(DemoSafetyMessageDescriptor)
+Register_ClassDescriptor(CustomSafetyMessageDescriptor)
 
-DemoSafetyMessageDescriptor::DemoSafetyMessageDescriptor() : omnetpp::cClassDescriptor("veins::DemoSafetyMessage", "omnetpp::cPacket")
+CustomSafetyMessageDescriptor::CustomSafetyMessageDescriptor() : omnetpp::cClassDescriptor("veins::CustomSafetyMessage", "omnetpp::cPacket")
 {
     propertynames = nullptr;
 }
 
-DemoSafetyMessageDescriptor::~DemoSafetyMessageDescriptor()
+CustomSafetyMessageDescriptor::~CustomSafetyMessageDescriptor()
 {
     delete[] propertynames;
 }
 
-bool DemoSafetyMessageDescriptor::doesSupport(omnetpp::cObject *obj) const
+bool CustomSafetyMessageDescriptor::doesSupport(omnetpp::cObject *obj) const
 {
-    return dynamic_cast<DemoSafetyMessage *>(obj)!=nullptr;
+    return dynamic_cast<CustomSafetyMessage *>(obj)!=nullptr;
 }
 
-const char **DemoSafetyMessageDescriptor::getPropertyNames() const
+const char **CustomSafetyMessageDescriptor::getPropertyNames() const
 {
     if (!propertynames) {
         static const char *names[] = {  nullptr };
@@ -341,19 +341,19 @@ const char **DemoSafetyMessageDescriptor::getPropertyNames() const
     return propertynames;
 }
 
-const char *DemoSafetyMessageDescriptor::getProperty(const char *propertyname) const
+const char *CustomSafetyMessageDescriptor::getProperty(const char *propertyname) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     return basedesc ? basedesc->getProperty(propertyname) : nullptr;
 }
 
-int DemoSafetyMessageDescriptor::getFieldCount() const
+int CustomSafetyMessageDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     return basedesc ? 5+basedesc->getFieldCount() : 5;
 }
 
-unsigned int DemoSafetyMessageDescriptor::getFieldTypeFlags(int field) const
+unsigned int CustomSafetyMessageDescriptor::getFieldTypeFlags(int field) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -371,7 +371,7 @@ unsigned int DemoSafetyMessageDescriptor::getFieldTypeFlags(int field) const
     return (field>=0 && field<5) ? fieldTypeFlags[field] : 0;
 }
 
-const char *DemoSafetyMessageDescriptor::getFieldName(int field) const
+const char *CustomSafetyMessageDescriptor::getFieldName(int field) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -389,7 +389,7 @@ const char *DemoSafetyMessageDescriptor::getFieldName(int field) const
     return (field>=0 && field<5) ? fieldNames[field] : nullptr;
 }
 
-int DemoSafetyMessageDescriptor::findField(const char *fieldName) const
+int CustomSafetyMessageDescriptor::findField(const char *fieldName) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     int base = basedesc ? basedesc->getFieldCount() : 0;
@@ -401,7 +401,7 @@ int DemoSafetyMessageDescriptor::findField(const char *fieldName) const
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
-const char *DemoSafetyMessageDescriptor::getFieldTypeString(int field) const
+const char *CustomSafetyMessageDescriptor::getFieldTypeString(int field) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -419,7 +419,7 @@ const char *DemoSafetyMessageDescriptor::getFieldTypeString(int field) const
     return (field>=0 && field<5) ? fieldTypeStrings[field] : nullptr;
 }
 
-const char **DemoSafetyMessageDescriptor::getFieldPropertyNames(int field) const
+const char **CustomSafetyMessageDescriptor::getFieldPropertyNames(int field) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -432,7 +432,7 @@ const char **DemoSafetyMessageDescriptor::getFieldPropertyNames(int field) const
     }
 }
 
-const char *DemoSafetyMessageDescriptor::getFieldProperty(int field, const char *propertyname) const
+const char *CustomSafetyMessageDescriptor::getFieldProperty(int field, const char *propertyname) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -445,7 +445,7 @@ const char *DemoSafetyMessageDescriptor::getFieldProperty(int field, const char 
     }
 }
 
-int DemoSafetyMessageDescriptor::getFieldArraySize(void *object, int field) const
+int CustomSafetyMessageDescriptor::getFieldArraySize(void *object, int field) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -453,13 +453,13 @@ int DemoSafetyMessageDescriptor::getFieldArraySize(void *object, int field) cons
             return basedesc->getFieldArraySize(object, field);
         field -= basedesc->getFieldCount();
     }
-    DemoSafetyMessage *pp = (DemoSafetyMessage *)object; (void)pp;
+    CustomSafetyMessage *pp = (CustomSafetyMessage *)object; (void)pp;
     switch (field) {
         default: return 0;
     }
 }
 
-const char *DemoSafetyMessageDescriptor::getFieldDynamicTypeString(void *object, int field, int i) const
+const char *CustomSafetyMessageDescriptor::getFieldDynamicTypeString(void *object, int field, int i) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -467,13 +467,13 @@ const char *DemoSafetyMessageDescriptor::getFieldDynamicTypeString(void *object,
             return basedesc->getFieldDynamicTypeString(object,field,i);
         field -= basedesc->getFieldCount();
     }
-    DemoSafetyMessage *pp = (DemoSafetyMessage *)object; (void)pp;
+    CustomSafetyMessage *pp = (CustomSafetyMessage *)object; (void)pp;
     switch (field) {
         default: return nullptr;
     }
 }
 
-std::string DemoSafetyMessageDescriptor::getFieldValueAsString(void *object, int field, int i) const
+std::string CustomSafetyMessageDescriptor::getFieldValueAsString(void *object, int field, int i) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -481,7 +481,7 @@ std::string DemoSafetyMessageDescriptor::getFieldValueAsString(void *object, int
             return basedesc->getFieldValueAsString(object,field,i);
         field -= basedesc->getFieldCount();
     }
-    DemoSafetyMessage *pp = (DemoSafetyMessage *)object; (void)pp;
+    CustomSafetyMessage *pp = (CustomSafetyMessage *)object; (void)pp;
     switch (field) {
         case 0: return long2string(pp->getVehicle());
         case 1: return double2string(pp->getPosX());
@@ -492,7 +492,7 @@ std::string DemoSafetyMessageDescriptor::getFieldValueAsString(void *object, int
     }
 }
 
-bool DemoSafetyMessageDescriptor::setFieldValueAsString(void *object, int field, int i, const char *value) const
+bool CustomSafetyMessageDescriptor::setFieldValueAsString(void *object, int field, int i, const char *value) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -500,7 +500,7 @@ bool DemoSafetyMessageDescriptor::setFieldValueAsString(void *object, int field,
             return basedesc->setFieldValueAsString(object,field,i,value);
         field -= basedesc->getFieldCount();
     }
-    DemoSafetyMessage *pp = (DemoSafetyMessage *)object; (void)pp;
+    CustomSafetyMessage *pp = (CustomSafetyMessage *)object; (void)pp;
     switch (field) {
         case 0: pp->setVehicle(string2long(value)); return true;
         case 1: pp->setPosX(string2double(value)); return true;
@@ -511,7 +511,7 @@ bool DemoSafetyMessageDescriptor::setFieldValueAsString(void *object, int field,
     }
 }
 
-const char *DemoSafetyMessageDescriptor::getFieldStructName(int field) const
+const char *CustomSafetyMessageDescriptor::getFieldStructName(int field) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -524,7 +524,7 @@ const char *DemoSafetyMessageDescriptor::getFieldStructName(int field) const
     };
 }
 
-void *DemoSafetyMessageDescriptor::getFieldStructValuePointer(void *object, int field, int i) const
+void *CustomSafetyMessageDescriptor::getFieldStructValuePointer(void *object, int field, int i) const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
@@ -532,7 +532,7 @@ void *DemoSafetyMessageDescriptor::getFieldStructValuePointer(void *object, int 
             return basedesc->getFieldStructValuePointer(object, field, i);
         field -= basedesc->getFieldCount();
     }
-    DemoSafetyMessage *pp = (DemoSafetyMessage *)object; (void)pp;
+    CustomSafetyMessage *pp = (CustomSafetyMessage *)object; (void)pp;
     switch (field) {
         default: return nullptr;
     }

@@ -25,15 +25,16 @@
 // #include "veins/veins.h"
 // #include "MyVeinsApp.h"
 #include <omnetpp.h>
-// #include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
 #include "DemoBaseApplLayer.h"
+#include "CustomSafetyMessage_m.h"
 #include "DemoServiceAdvertisement_m.h"
-#include "DemoSafetyMessage_m.h"
 // #include "veins/modules/messages/DemoSafetyMessage_m.h"
 
 using namespace omnetpp;
 
 namespace veins {
+
+class CustomSafetyMessage;  // Forward declaration
 
 /**
  * @brief
@@ -49,7 +50,8 @@ class VEINS_API MyVeinsApp : public DemoBaseApplLayer {
 public:
     virtual void initialize(int stage) override;
     virtual void handleSelfMsg(cMessage* msg) override;
-    virtual void onBSM(DemoSafetyMessage* bsm) override;
+    void onMyBSM(CustomSafetyMessage* bsm);  // Custom method for our message type
+    virtual void onBSM(DemoSafetyMessage* bsm) override;  // Keep base class override
     virtual void onWSM(BaseFrame1609_4* wsm) override;
     virtual void onWSA(DemoServiceAdvertisment* wsa) override;
     virtual void handlePositionUpdate(cObject* obj) override;

@@ -20,12 +20,9 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-import veins.base.utils.Coord;
-import veins.modules.messages.BaseFrame1609_4;
-
 namespace veins;
 
-packet DemoServiceAdvertisment extends BaseFrame1609_4 {
+packet DemoServiceAdvertisment {
     int targetChannel;
     string serviceDescription;
 }
